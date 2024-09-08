@@ -16,6 +16,25 @@ def find_duplicates_nested_loop(l: list) -> list:
     duplicatesList = list(duplicatesSet)
     return duplicatesList
 
+def find_duplicates_dictionary(l: list) -> list:
+    countDict = {}
+
+    # If an integer is not in the dictionary, add it as a key with value of 1. Else, increment key by 1.
+    for i in l:
+        if i not in countDict.keys():
+            countDict[i] = 1
+        else:
+            countDict[i] += 1
+    
+    duplicatesSet = set()
+    for key in countDict:
+        if countDict[key] >= 2:
+            duplicatesSet.add(key)
+    
+    # Convert to list before returning.
+    duplicatesList = list(duplicatesSet)
+    return duplicatesList
+
 if __name__ == "__main__":
     sample1 = [3, 7, 5, 6, 7, 4, 8, 5, 7, 66]
     sample2 = [3, 5, 6, 4, 4, 5, 66, 6, 7, 6]
